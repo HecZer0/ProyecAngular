@@ -1,0 +1,43 @@
+<h1>Formulario de contacto template {{id}}</h1>
+
+<form (ngSubmit)="onSubmit(contactForm.value)" #contactForm="ngForm">
+    <!-- Campo Nombre -->
+    <div class="mb-4">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" required #name="ngModel">
+        <div class="alert alert-danger" [hidden]="name.valid || name.pristine">Este campo es requerido.</div>
+    </div>
+
+    <!-- Campo Mayoria de edad -->
+    <div class="mb-4 form-check">
+        <label for="checkAdult" class="form-label">¿Eres mayor de edad?</label>
+        <input #checkAdult="ngModel" type="checkbox" class="form-check-input" id="checkAdult" name="checkAdult" [(ngModel)]="model.checkAdult">
+        <!-- <div class="alert alert-danger" [hidden]="checkAdult.valid || checkAdult.pristine">Este campo es requerido.</div> -->
+    </div>
+
+    <!-- Campo Departamento -->
+    <div class="mb-4">
+        <label for="department" class="form-label">Departamento</label>
+        <select name="" id="" class="form-select form-select-sm" name="department" [(ngModel)]="model.department">
+            <option selected>Departamentos</option>
+            <option value="marketing">Marketing</option>
+            <option value="sales">Ventas</option>
+            <option value="other">Otro...</option>
+        </select>
+        <!-- <div class="alert alert-danger">Este campo es requerido.</div> -->
+    </div>
+
+    <!-- Campo Comentario -->
+    <div class="mb-4">
+        <label for="">Comentario</label>
+        <br>
+        <label for="comment" class="form-label"></label>
+        <textarea #comment="ngModel" class="form-control" name="comment" id="comment" placeholder="Deja tu comentario..." [(ngModel)]="model.comment" required></textarea>
+        <div class="alert alert-danger" [hidden]="comment.valid || comment.pristine">Este campo es requerido.</div>
+    </div>
+
+    <!-- Boton enviar -->
+    <div class="float-end d-grid gap-2 col-md-4">
+        <button type="submit" class="btn btn-info" [disabled]="contactForm.invalid">Enviar</button>
+    </div>
+</form>
